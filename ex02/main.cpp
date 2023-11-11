@@ -61,11 +61,11 @@ int main(int argc, char* argv[]) {
         std::cout << *it << " ";
     }
     std::cout << std::endl;
-    std::cout << "After(list): ";
-    for (std::list<int>::iterator it = numbersList.begin(); it != numbersList.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
+    // std::cout << "After(list): ";
+    // for (std::list<int>::iterator it = numbersList.begin(); it != numbersList.end(); ++it) {
+    //     std::cout << *it << " ";
+    // }
+    // std::cout << std::endl;
 
     std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << timeVector << " us" << std::endl;
     std::cout << "Time to process a range of " << argc - 1 << " elements with std::list : " << timeList << " us" << std::endl;

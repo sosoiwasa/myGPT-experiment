@@ -110,32 +110,35 @@ void mergeInsertionSortList(std::list<int>& lst) {
     std::list<int> larger, smaller;
     pairAndCompareList(lst, larger, smaller);
 
-    // Recursively sort both larger and smaller lists
-    mergeInsertionSortList(larger);
-    mergeInsertionSortList(smaller);
+    mergeInsertionSortList(larger); // 再帰的に大きい要素をソート
+    mergeInsertionSortList(smaller); // 再帰的に小さい要素をソート
 
-    // Clear the original list
-    lst.clear();
+    lst.clear(); // 元のリストをクリア
 
-    // Merge the sorted lists back into the original list
-    // Note: This step should correctly interleave elements from larger and smaller to maintain sorting
     std::list<int>::iterator itLarger = larger.begin();
     std::list<int>::iterator itSmaller = smaller.begin();
 
+    // 小さい要素のリストを走査し、大きい要素のリストと統合
     while (itLarger != larger.end() && itSmaller != smaller.end()) {
+        // 適切な位置に要素を挿入
         if (*itLarger < *itSmaller) {
             lst.push_back(*itLarger++);
         } else {
-            lst.push_back(*itSmaller++);
+            // 小さい要素を挿入する正しい位置を見つける
+            std::list<int>::iterator insertPos = lst.end();
+            while (insertPos != lst.begin() && *prev(insertPos) > *itSmaller) {
+                --insertPos;
+            }
+            lst.insert(insertPos, *itSmaller++);
         }
     }
 
-    // Append any remaining elements
+    // 残りの要素を挿入
     while (itLarger != larger.end()) {
         lst.push_back(*itLarger++);
     }
     while (itSmaller != smaller.end()) {
-        lst.push_back(*itSmaller++);
+        lst.insert(lst.end(), *itSmaller++);
     }
 }
 
