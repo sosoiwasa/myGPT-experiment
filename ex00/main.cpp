@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
             continue;
         }
 
-        if (value > INT_MAX) {
+        if (value > 1000) {
             std::cerr << "Error: too large a number." << std::endl;
             continue;
         }
