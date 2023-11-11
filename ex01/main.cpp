@@ -2,7 +2,6 @@
 #include <stack>
 #include <sstream>
 #include <string>
-#include <cstdlib> // For atoi
 
 bool isOperator(const std::string& token) {
     return token == "+" || token == "-" || token == "*" || token == "/";
@@ -28,9 +27,12 @@ int main(int argc, char* argv[]) {
 
     while (iss >> token) {
         if (isdigit(token[0])) {
-            int num = atoi(token.c_str());
+            int num = std::atoi(token.c_str());
             if (num >= 10) {
                 std::cerr << "Error: Number in expression is greater than or equal to 10." << std::endl;
+                return 1;
+            } else if (num < 0) {
+                std::cerr << "Error: Number in expression is invalid." << std::endl;
                 return 1;
             }
             values.push(static_cast<double>(num));

@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <cstdlib>
+#include <cmath>
 
 std::map<std::string, double> loadExchangeRates(const std::string& filename) {
     std::map<std::string, double> rates;
@@ -72,7 +73,7 @@ int main(int argc, char *argv[]) {
         std::istringstream iss(line);
         getline(iss, date, '|');
         iss.ignore(1); // Ignore whitespace
-        if (!(iss >> value)) {
+        if (!(iss >> value) || std::isnan(value)) {
             std::cerr << "Error: bad input => " << line << std::endl;
             continue;
         }
