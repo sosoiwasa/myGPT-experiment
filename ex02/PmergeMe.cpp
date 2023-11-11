@@ -69,10 +69,11 @@ void mergeInsertionSort(std::vector<int>& elements) {
     recursiveSort(larger);
     recursiveSort(smaller);
 
-    // Merge the two sorted vectors back together
-    elements.clear();
-    elements.reserve(larger.size() + smaller.size());
-    std::merge(larger.begin(), larger.end(), smaller.begin(), smaller.end(), std::back_inserter(elements));
+    // Insert elements from the sorted smaller vector into the sorted larger vector
+    insertElements(larger, smaller);
+
+    // The larger vector is now fully sorted
+    elements = std::move(larger);
 }
 
 // ###### List version ######
