@@ -73,7 +73,7 @@ void mergeInsertionSort(std::vector<int>& elements) {
     insertElements(larger, smaller);
 
     // The larger vector is now fully sorted
-    elements = std::move(larger);
+    elements = larger;
 }
 
 // ###### List version ######

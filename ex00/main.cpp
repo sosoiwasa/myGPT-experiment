@@ -45,9 +45,10 @@ std::string findClosestDate(const std::map<std::string, double>& rates, const st
 
 bool isValidDate(const std::string& date) {
     // Simple date format validation: YYYY-MM-DD
-    if (date.length() != 10) return false;
-    if (date[4] != '-' || date[7] != '-') return false;
-    // Add more checks if needed
+    if (date.length() != 10)
+        return false;
+    if (date[4] != '-' || date[7] != '-')
+        return false;
     return true;
 }
 

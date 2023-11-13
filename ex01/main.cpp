@@ -8,10 +8,14 @@ bool isOperator(const std::string& token) {
 }
 
 double performOperation(const std::string& op, double val1, double val2) {
-    if (op == "+") return val1 + val2;
-    if (op == "-") return val1 - val2;
-    if (op == "*") return val1 * val2;
-    if (op == "/") return val1 / val2;
+    if (op == "+")
+        return val1 + val2;
+    if (op == "-")
+        return val1 - val2;
+    if (op == "*")
+        return val1 * val2;
+    if (op == "/")
+        return val1 / val2;
     return 0; // Should not reach here if input is valid
 }
 
